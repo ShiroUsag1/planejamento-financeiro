@@ -1,0 +1,97 @@
+<div class="row">
+  <div class="col-md-6">
+    <div class="accordion" id="accordionExample">
+      <div class="accordion-item">
+        <h3 class="accordion-header">
+          <button
+            class="accordion-button"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#collapseOne"
+            aria-expanded="true"
+            aria-controls="collapseOne"
+          >
+            Quiz Decisões Rápida
+          </button>
+        </h3>
+        <div
+          id="collapseOne"
+          class="accordion-collapse collapse show"
+          data-bs-parent="#accordionExample"
+        >
+          <div class="accordion-body">
+            <div *ngIf="perguntaAtual">
+              <h4>{{ perguntaAtual.texto }}</h4>
+
+              <div class="d-flex justify-content-between">
+                <button
+                  *ngFor="let opcao of perguntaAtual.opcoes"
+                  class="btn btn-primary mb-2"
+                  (click)="selecionarOpcao(opcao)"
+                >
+                  {{ opcao.texto }}
+                </button>
+              </div>
+            </div>
+
+            <div *ngIf="recomendacaoFinal" class="alert alert-success mt-4">
+              <h4>Recomendação:</h4>
+              <p>{{ recomendacaoFinal }}</p>
+              <button class="btn btn-secondary" (click)="reiniciarQuiz()">
+                Reiniciar Quiz
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h3 class="accordion-header">
+          <button
+            class="accordion-button collapsed"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#collapsetwo"
+            aria-expanded="false"
+            aria-controls="collapsetwo"
+          >
+            Prospecções Financeiras
+          </button>
+        </h3>
+        <div
+          id="collapsetwo"
+          class="accordion-collapse collapse"
+          data-bs-parent="#accordionExample"
+        >
+          <div class="accordion-body">
+            <div *ngIf="perguntaAtual">
+              <h4>{{ perguntaAtual.texto }}</h4>
+
+              <div
+                *ngFor="let opcao of perguntaAtual.opcoes"
+                class="list-group-item"
+              >
+                <button
+                  class="btn btn-primary mb-2"
+                  (click)="selecionarOpcao(opcao)"
+                >
+                  {{ opcao.texto }}
+                </button>
+              </div>
+            </div>
+
+            <div *ngIf="recomendacaoFinal" class="alert alert-success mt-4">
+              <h4>Recomendação:</h4>
+              <p>{{ recomendacaoFinal }}</p>
+              <button class="btn btn-secondary" (click)="reiniciarQuiz()">
+                Reiniciar Quiz
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <app-calendario-financeiro></app-calendario-financeiro>
+  </div>
+</div>
